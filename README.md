@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# FrontEnd_Capstone_Project
+
+EPAM Tech Orda capstone — personal CV/resume single-page application (React + TypeScript). See `docs/superpowers/specs/` and `docs/superpowers/plans/` for the Stage 1 design and implementation plan.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
