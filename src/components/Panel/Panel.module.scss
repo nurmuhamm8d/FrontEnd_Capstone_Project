@@ -1,0 +1,41 @@
+@use '../../assets/styles/variables' as vars;
+@use '../../assets/styles/mixins' as mix;
+
+.panel {
+  width: 280px;
+  background: vars.$color-dark;
+  padding: 32px 16px;
+  flex-shrink: 0;
+
+  @include mix.mobile {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: width 0.2s ease;
+  }
+}
+
+.open {
+  @include mix.mobile {
+    width: 240px;
+    padding: 32px 16px;
+  }
+}
+
+.hamburger {
+  display: none;
+
+  @include mix.mobile {
+    display: block;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
