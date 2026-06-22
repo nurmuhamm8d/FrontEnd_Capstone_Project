@@ -1,3 +1,4 @@
+import { Info } from '../Info/Info';
 import styles from './PhotoBox.module.scss';
 
 export interface PhotoBoxProps {
@@ -12,6 +13,10 @@ export const PhotoBox = ({ name, title, description, avatar }: PhotoBoxProps) =>
     <img className={styles.avatar} src={avatar} alt={name} />
     <h1 className={styles.name}>{name}</h1>
     <h2 className={styles.title}>{title}</h2>
-    <p className={styles.description}>{description}</p>
+    {description && (
+      <div className={styles.description}>
+        <Info text={description} />
+      </div>
+    )}
   </div>
 );

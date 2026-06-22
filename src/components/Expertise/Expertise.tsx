@@ -9,10 +9,14 @@ export const Expertise = ({ data }: ExpertiseProps) => (
   <ul className={styles.list}>
     {data.map(({ date, info }) => (
       <li key={`${date}-${info.company}`} className={styles.item}>
-        <span className={styles.date}>{date}</span>
-        <h3 className={styles.company}>{info.company}</h3>
-        <h4 className={styles.job}>{info.job}</h4>
-        <p className={styles.description}>{info.description}</p>
+        <div className={styles.meta}>
+          <h3 className={styles.company}>{info.company}</h3>
+          <span className={styles.date}>{date}</span>
+        </div>
+        <div className={styles.details}>
+          <h4 className={styles.job}>{info.job}</h4>
+          <p className={styles.description}>{info.description}</p>
+        </div>
       </li>
     ))}
   </ul>

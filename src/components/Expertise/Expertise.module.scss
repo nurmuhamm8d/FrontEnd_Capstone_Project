@@ -7,29 +7,36 @@
 }
 
 .item {
-  padding-left: 16px;
-  border-left: 3px solid vars.$color-primary;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  column-gap: 24px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
 }
 
 .date {
   font-size: 13px;
-  font-weight: 600;
-  color: vars.$color-primary;
+  color: vars.$color-text-muted;
+  margin-top: 2px;
 }
 
 .company {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
+  margin: 0;
 }
 
 .job {
-  font-size: 14px;
-  font-weight: 400;
-  color: vars.$color-text-light;
-  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 6px;
 }
 
 .description {
   font-size: 14px;
   line-height: 1.5;
+  margin: 0;
 }

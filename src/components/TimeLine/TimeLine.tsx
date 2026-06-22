@@ -10,8 +10,11 @@ export const TimeLine = ({ data }: TimeLineProps) => (
     {data.map(({ date, title, text }) => (
       <li key={`${date}-${title}`} className={styles.item}>
         <span className={styles.date}>{date}</span>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.text}>{text}</p>
+        <span className={styles.rail} aria-hidden="true" />
+        <div className={styles.card}>
+          <h3 className={styles.title}>{title}</h3>
+          <p className={styles.text}>{text}</p>
+        </div>
       </li>
     ))}
   </ul>
