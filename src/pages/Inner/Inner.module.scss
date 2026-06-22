@@ -20,6 +20,17 @@
   }
 }
 
+.section {
+  margin-bottom: 56px;
+  scroll-margin-top: 24px;
+}
+
+.sectionTitle {
+  color: vars.$color-primary;
+  font-size: 28px;
+  margin: 0 0 20px;
+}
+
 .backToTop {
   position: fixed;
   bottom: 24px;

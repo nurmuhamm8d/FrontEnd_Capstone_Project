@@ -7,7 +7,7 @@ export interface BoxProps {
 
 export const Box = ({ title, content }: BoxProps) => (
   <section className={styles.box}>
-    <h3 className={styles.title}>{title}</h3>
+    {title && <h3 className={styles.title}>{title}</h3>}
     <p className={styles.content}>{content}</p>
   </section>
 );
