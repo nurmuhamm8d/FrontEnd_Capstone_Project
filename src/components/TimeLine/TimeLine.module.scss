@@ -1,0 +1,32 @@
+@use '../../assets/styles/variables' as vars;
+
+.timeline {
+  height: 30vh;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 8px;
+}
+
+.item {
+  border-left: 3px solid vars.$color-primary;
+  padding-left: 16px;
+}
+
+.date {
+  font-weight: 700;
+  color: vars.$color-primary;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.5;
+}
