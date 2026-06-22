@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Navigation } from '../Navigation/Navigation';
-import { Button } from '../Button/Button';
 import { PhotoBox } from '../PhotoBox/PhotoBox';
 import styles from './Panel.module.scss';
 
@@ -19,13 +19,14 @@ export const Panel = ({ name, title, avatar }: PanelProps) => {
       data-testid="panel"
       className={isOpen ? `${styles.panel} ${styles.open}` : styles.panel}
     >
-      <div
-        className={styles.hamburger}
+      <button
+        type="button"
         aria-label="Toggle navigation"
+        className={styles.hamburger}
         onClick={() => setIsOpen((open) => !open)}
       >
-        <Button icon={faBars} text="" />
-      </div>
+        <FontAwesomeIcon icon={faBars} />
+      </button>
       <div className={styles.content}>
         <PhotoBox name={name} title={title} description="" avatar={avatar} />
         <Navigation />
