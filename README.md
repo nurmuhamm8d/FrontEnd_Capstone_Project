@@ -1,6 +1,6 @@
 # FrontEnd_Capstone_Project
 
-EPAM Tech Orda capstone — personal CV/resume single-page application (React + TypeScript). See `docs/superpowers/specs/` and `docs/superpowers/plans/` for the Stage 1 design and implementation plan.
+Капстоун проект EPAM Tech Orda — личное резюме/CV в виде SPA на React + TypeScript.
 
 ## Getting Started with Create React App
 
