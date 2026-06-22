@@ -1,0 +1,35 @@
+@use '../../assets/styles/variables' as vars;
+
+.photoBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  color: vars.$color-text-light;
+}
+
+.description {
+  max-width: 480px;
+  font-size: 14px;
+  color: vars.$color-text-light;
+}

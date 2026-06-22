@@ -1,0 +1,17 @@
+@use '../../assets/styles/variables' as vars;
+
+.address {
+  font-style: normal;
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  a {
+    color: vars.$color-primary;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
