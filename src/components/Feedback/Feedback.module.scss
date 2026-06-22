@@ -1,0 +1,36 @@
+@use '../../assets/styles/variables' as vars;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.item {
+  padding: 16px;
+  border: 1px solid vars.$color-border;
+  border-radius: 6px;
+}
+
+.quote {
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.reporter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  a {
+    font-weight: 600;
+    color: vars.$color-primary;
+  }
+}
+
+.photo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
