@@ -1,0 +1,48 @@
+@use '../../assets/styles/variables' as vars;
+@use '../../assets/styles/mixins' as mix;
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: vars.$color-text;
+
+  &.active {
+    background: vars.$color-primary;
+    color: #fff;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  @include mix.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.item {
+  border: 1px solid vars.$color-border;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.title {
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
