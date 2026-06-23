@@ -2,16 +2,47 @@
 
 .address {
   font-style: normal;
+}
 
-  p {
-    margin-bottom: 8px;
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.primary {
+  font-size: 15px;
+  font-weight: 700;
+  color: vars.$color-text;
+}
+
+.socialText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.secondary {
+  font-size: 13px;
+  color: vars.$color-text-muted;
+
+  &:hover {
+    text-decoration: underline;
   }
+}
 
-  a {
-    color: vars.$color-primary;
+a.primary:hover {
+  text-decoration: underline;
+}
 
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+.location {
+  font-size: 13px;
+  color: vars.$color-text-muted;
 }

@@ -2,40 +2,76 @@
 @use '../../assets/styles/mixins' as mix;
 
 .panel {
-  width: 280px;
+  width: 0;
   background: vars.$color-dark;
-  padding: 32px 16px;
+  padding: 0;
   flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.25s ease, padding 0.25s ease, transform 0.25s ease;
 
   @include mix.mobile {
-    width: 0;
-    padding: 0;
-    overflow: hidden;
-    transition: width 0.2s ease;
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 14;
+    width: 240px;
+    padding: 32px 16px;
+    transform: translateX(-100%);
   }
 }
 
 .open {
+  width: 280px;
+  padding: 32px 16px;
+
   @include mix.mobile {
     width: 240px;
-    padding: 32px 16px;
+    transform: translateX(0);
   }
 }
 
-.hamburger {
-  display: none;
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 13;
+  background: rgba(0, 0, 0, 0.4);
+}
 
-  @include mix.mobile {
-    display: block;
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 10;
-  }
+.hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 20;
+  background: vars.$color-dark;
+  color: #fff;
+  border-radius: 6px;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  padding-top: 56px;
+}
+
+.goBack {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: vars.$color-text-light;
+  font-size: 14px;
+  font-weight: 600;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.goBackIcon {
+  width: 10px;
+  height: 10px;
 }

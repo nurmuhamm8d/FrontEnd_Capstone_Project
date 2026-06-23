@@ -4,16 +4,36 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
-  border-radius: 4px;
-  background: vars.$color-primary;
-  color: #fff;
+  border-radius: 6px;
   font-weight: 600;
-  text-transform: uppercase;
-  transition: opacity 0.2s ease;
+  font-size: 15px;
+  transition: opacity 0.2s ease, color 0.2s ease;
 
   &:hover {
     opacity: 0.85;
+  }
+}
+
+.primary {
+  padding: 10px 20px;
+  background: vars.$color-primary;
+  color: #fff;
+}
+
+.overlay {
+  padding: 12px 28px;
+  background: rgba(vars.$color-dark, 0.85);
+  color: #fff;
+}
+
+.ghost {
+  padding: 8px 0;
+  background: transparent;
+  color: vars.$color-text-light;
+
+  &:hover {
+    opacity: 1;
+    color: #fff;
   }
 }
 

@@ -3,34 +3,55 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 }
 
 .item {
-  padding: 16px;
-  border: 1px solid vars.$color-border;
-  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .quote {
-  font-style: italic;
-  margin-bottom: 12px;
+  background: #eee;
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: vars.$color-text;
 }
 
 .reporter {
   display: flex;
   align-items: center;
-  gap: 8px;
-
-  a {
-    font-weight: 600;
-    color: vars.$color-primary;
-  }
+  gap: 12px;
 }
 
 .photo {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
+}
+
+.byline {
+  margin: 0;
+  font-size: 14px;
+  color: vars.$color-text;
+}
+
+.name {
+  font-weight: 700;
+  color: vars.$color-text;
+}
+
+.link {
+  color: vars.$color-primary;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

@@ -1,38 +1,55 @@
 @use '../../assets/styles/variables' as vars;
 
 .timeline {
-  height: 30vh;
+  position: relative;
   max-height: 80vh;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   padding-right: 8px;
 }
 
+.rail {
+  position: absolute;
+  top: 38px;
+  bottom: 32px;
+  left: 33px;
+  width: 4px;
+  border-radius: 2px;
+  background: vars.$color-primary;
+}
+
 .item {
   display: grid;
-  grid-template-columns: 70px 16px 1fr;
-  column-gap: 16px;
-  padding-bottom: 20px;
+  grid-template-columns: 70px 1fr;
+  column-gap: 28px;
+  padding-bottom: 24px;
 }
 
 .date {
   font-weight: 700;
+  font-size: 15px;
   color: vars.$color-text;
   padding-top: 16px;
 }
 
-.rail {
-  background: vars.$color-primary;
-  border-radius: 2px;
-  width: 3px;
-  justify-self: center;
-}
-
 .card {
+  position: relative;
   background: #eee;
   border-radius: 4px;
   padding: 16px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: -13px;
+    width: 0;
+    height: 0;
+    border: 13px solid transparent;
+    border-right-color: #eee;
+  }
 }
 
 .title {

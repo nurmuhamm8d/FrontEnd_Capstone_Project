@@ -14,7 +14,7 @@ export const Home = () => {
         description="EPAM Tech Orda front-end track graduate-in-progress, turning React/TypeScript practice into real working products — from this CV app to automation bots and AI-assisted tooling."
         avatar="/assets/images/avatar.jpg"
       />
-      <Button text="Know more" onClick={() => navigate('/inner')} />
+      <Button text="Know more" variant="overlay" onClick={() => navigate('/inner')} />
     </div>
   );
 };

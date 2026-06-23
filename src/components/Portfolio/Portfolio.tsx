@@ -26,9 +26,15 @@ export const Portfolio = () => {
       </div>
       <ul className={styles.grid}>
         {visibleItems.map((item) => (
-          <li key={item.id} className={styles.item}>
+          <li key={item.id} className={styles.item} tabIndex={0}>
             <img src={item.image} alt={item.title} className={styles.image} />
-            <h3 className={styles.title}>{item.title}</h3>
+            <div className={styles.overlay}>
+              <h3 className={styles.title}>{item.title}</h3>
+              <p className={styles.description}>{item.description}</p>
+              <a href={item.resourceUrl} target="_blank" rel="noreferrer" className={styles.link}>
+                View resource
+              </a>
+            </div>
           </li>
         ))}
       </ul>

@@ -1,8 +1,7 @@
 @use '../../assets/styles/variables' as vars;
 
 .info {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   color: vars.$color-text-light;
-  font-style: italic;
 }
