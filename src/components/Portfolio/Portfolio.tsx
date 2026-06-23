@@ -13,15 +13,21 @@ export const Portfolio = () => {
   return (
     <div>
       <div className={styles.tabs}>
-        {portfolioCategories.map((category) => (
-          <button
-            key={category}
-            type="button"
-            className={category === activeCategory ? `${styles.tab} ${styles.active}` : styles.tab}
-            onClick={() => setActiveCategory(category)}
-          >
-            {category}
-          </button>
+        {portfolioCategories.map((category, index) => (
+          <span key={category} className={styles.tabWrap}>
+            <button
+              type="button"
+              className={category === activeCategory ? `${styles.tab} ${styles.active}` : styles.tab}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+            {index < portfolioCategories.length - 1 && (
+              <span className={styles.separator} aria-hidden="true">
+                /
+              </span>
+            )}
+          </span>
         ))}
       </div>
       <ul className={styles.grid}>

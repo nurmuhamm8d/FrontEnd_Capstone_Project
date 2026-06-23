@@ -3,20 +3,32 @@
 
 .tabs {
   display: flex;
-  gap: 12px;
+  gap: 6px;
   margin-bottom: 24px;
 }
 
+.tabWrap {
+  display: inline-flex;
+  align-items: center;
+}
+
 .tab {
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 0;
+  border: none;
+  background: none;
   font-weight: 600;
   color: vars.$color-text;
+  cursor: pointer;
 
   &.active {
-    background: vars.$color-primary;
-    color: #fff;
+    color: vars.$color-primary;
   }
+}
+
+.separator {
+  margin-left: 6px;
+  color: vars.$color-text;
+  font-weight: 400;
 }
 
 .grid {
