@@ -1,0 +1,51 @@
+import { createServer, Response } from 'miragejs';
+import { educationData } from '../assets/data/timeline';
+import { skillsData, SkillItem } from '../assets/data/skills';
+
+export interface EducationApiItem {
+  date: number;
+  title: string;
+  description: string;
+}
+
+export interface SkillApiItem {
+  name: string;
+  range: number;
+}
+
+const flattenSkills = (items: SkillItem[]): SkillApiItem[] =>
+  items.flatMap(({ name, range, children }) => [
+    { name, range },
+    ...(children ? flattenSkills(children) : []),
+  ]);
+
+export function makeServer({ environment = 'development' } = {}) {
+  return createServer({
+    environment,
+    seeds(server) {
+      server.db.loadData({
+        educations: educationData.map(({ date, title, text }) => ({
+          date,
+          title,
+          description: text,
+        })),
+        skills: flattenSkills(skillsData),
+      });
+    },
+    routes() {
+      this.namespace = 'api';
+
+      this.get('/educations', (schema) => schema.db.educations, { timing: 3000 });
+
+      this.get('/skills', (schema) => schema.db.skills, { timing: 3000 });
+
+      this.post('/skills', (schema, request) => {
+        const attrs = JSON.parse(request.requestBody) as Partial<SkillApiItem>;
+        if (!attrs.name || typeof attrs.range !== 'number') {
+          return new Response(422, {}, { error: 'Имя и уровень навыка обязательны' });
+        }
+        return schema.db.skills.insert({ name: attrs.name, range: attrs.range });
+      });
+    },
+  });
+}

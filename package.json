@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
+    "@reduxjs/toolkit": "^2.12.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -14,13 +15,17 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "formik": "^2.4.9",
+    "miragejs": "^0.1.48",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "react-redux": "^9.3.0",
     "react-router-dom": "^6.30.4",
     "react-scripts": "5.0.1",
     "sass": "^1.101.0",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
