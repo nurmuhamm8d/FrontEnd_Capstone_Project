@@ -19,25 +19,28 @@ const flattenSkills = (items: SkillItem[]): SkillApiItem[] =>
     ...(children ? flattenSkills(children) : []),
   ]);
 
+export const buildSeedData = () => ({
+  educations: educationData.map(({ date, title, text }) => ({
+    date,
+    title,
+    description: text,
+  })),
+  skills: flattenSkills(skillsData),
+});
+
 export function makeServer({ environment = 'development' } = {}) {
   return createServer({
     environment,
     seeds(server) {
-      server.db.loadData({
-        educations: educationData.map(({ date, title, text }) => ({
-          date,
-          title,
-          description: text,
-        })),
-        skills: flattenSkills(skillsData),
-      });
+      server.db.loadData(buildSeedData());
     },
     routes() {
       this.namespace = 'api';
+      const timing = environment === 'test' ? 0 : 3000;
 
-      this.get('/educations', (schema) => schema.db.educations, { timing: 3000 });
+      this.get('/educations', (schema) => schema.db.educations, { timing });
 
-      this.get('/skills', (schema) => schema.db.skills, { timing: 3000 });
+      this.get('/skills', (schema) => schema.db.skills, { timing });
 
       this.post('/skills', (schema, request) => {
         const attrs = JSON.parse(request.requestBody) as Partial<SkillApiItem>;
