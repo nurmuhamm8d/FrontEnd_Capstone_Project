@@ -1,4 +1,5 @@
 import type { TimeLineItem } from '../../assets/data/timeline';
+import { CardCornerIcon } from '../../assets/icons/timeline/card-corner';
 import styles from './TimeLine.module.scss';
 
 export interface TimeLineProps {
@@ -12,6 +13,7 @@ export const TimeLine = ({ data }: TimeLineProps) => (
       <li key={`${date}-${title}`} className={styles.item}>
         <span className={styles.date}>{date}</span>
         <div className={styles.card}>
+          <CardCornerIcon className={styles.cardCorner} aria-hidden="true" />
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.text}>{text}</p>
         </div>

@@ -2,7 +2,7 @@ import { PhoneIcon } from '../../assets/icons/contacts/phone';
 import { EmailIcon } from '../../assets/icons/contacts/email';
 import { TwitterIcon } from '../../assets/icons/contacts/twitter';
 import { FacebookIcon } from '../../assets/icons/contacts/facebook';
-import { SkypeIcon } from '../../assets/icons/contacts/skype';
+import { VkIcon } from '../../assets/icons/contacts/vk';
 import styles from './Address.module.scss';
 
 export interface SocialLink {
@@ -21,7 +21,7 @@ export interface AddressProps {
 const SOCIAL_ICONS: Record<string, typeof TwitterIcon> = {
   Twitter: TwitterIcon,
   Facebook: FacebookIcon,
-  Skype: SkypeIcon,
+  VK: VkIcon,
 };
 
 export const Address = ({ email, phone, location, socials = [] }: AddressProps) => (

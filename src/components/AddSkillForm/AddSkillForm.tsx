@@ -12,15 +12,15 @@ interface FormValues {
 
 const validationSchema = Yup.object({
   name: Yup.string()
-    .required('Укажите название навыка')
-    .min(2, 'Минимум 2 символа')
-    .max(40, 'Максимум 40 символов')
-    .matches(/^[A-Za-zА-Яа-яЁё0-9\s./+#-]+$/, 'Разрешены только буквы, цифры и . / + # -'),
+    .required('Skill name is required')
+    .min(2, 'Minimum 2 characters')
+    .max(40, 'Maximum 40 characters')
+    .matches(/^[A-Za-z0-9\s./+#-]+$/, 'Only letters, numbers and . / + # - are allowed'),
   range: Yup.number()
-    .typeError('Уровень должен быть числом')
-    .required('Укажите уровень владения')
-    .min(1, 'Минимум 1%')
-    .max(100, 'Максимум 100%'),
+    .typeError('Skill range must be a number')
+    .required('Skill range is required')
+    .min(1, 'Minimum 1%')
+    .max(100, 'Maximum 100%'),
 });
 
 const initialValues: FormValues = { name: '', range: '' };
@@ -41,20 +41,20 @@ export const AddSkillForm = () => {
       {({ isSubmitting }) => (
         <Form className={styles.form}>
           <div className={styles.field}>
-            <label htmlFor="skill-name">Навык</label>
-            <Field id="skill-name" name="name" type="text" placeholder="Например, GraphQL" />
-            <ErrorMessage name="name" component="span" className={styles.fieldError} />
+            <label htmlFor="skill-name">Skill name:</label>
+            <Field id="skill-name" name="name" type="text" placeholder="Enter skill name" />
           </div>
+          <ErrorMessage name="name" component="span" className={styles.fieldError} />
           <div className={styles.field}>
-            <label htmlFor="skill-range">Уровень, %</label>
-            <Field id="skill-range" name="range" type="number" min={1} max={100} />
-            <ErrorMessage name="range" component="span" className={styles.fieldError} />
+            <label htmlFor="skill-range">Skill range:</label>
+            <Field id="skill-range" name="range" type="number" min={1} max={100} placeholder="Enter skill range" />
           </div>
+          <ErrorMessage name="range" component="span" className={styles.fieldError} />
           <button type="submit" className={styles.submit} disabled={isSubmitting}>
-            Добавить навык
+            Add skill
           </button>
           {addStatus === 'failed' && (
-            <Notification type="error">{addError ?? 'Не удалось сохранить навык'}</Notification>
+            <Notification type="error">{addError ?? 'Failed to save the skill'}</Notification>
           )}
         </Form>
       )}

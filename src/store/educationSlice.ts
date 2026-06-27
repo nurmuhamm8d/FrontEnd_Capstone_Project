@@ -18,7 +18,7 @@ const initialState: EducationState = {
 export const fetchEducation = createAsyncThunk('education/fetch', async () => {
   const response = await fetch('/api/educations');
   if (!response.ok) {
-    throw new Error('Не удалось загрузить раздел образования');
+    throw new Error('Failed to load the education section');
   }
   return (await response.json()) as EducationApiItem[];
 });
@@ -39,7 +39,7 @@ const educationSlice = createSlice({
       })
       .addCase(fetchEducation.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.error.message ?? 'Ошибка загрузки';
+        state.error = action.error.message ?? 'Loading error';
       });
   },
 });

@@ -14,7 +14,7 @@
   position: absolute;
   top: 38px;
   bottom: 32px;
-  left: 33px;
+  left: 35px;
   width: 4px;
   border-radius: 2px;
   background: vars.$color-primary;
@@ -23,7 +23,7 @@
 .item {
   display: grid;
   grid-template-columns: 70px 1fr;
-  column-gap: 28px;
+  column-gap: 10px;
   padding-bottom: 24px;
 }
 
@@ -32,6 +32,7 @@
   font-size: 15px;
   color: vars.$color-text;
   padding-top: 16px;
+  text-align: center;
 }
 
 .card {
@@ -39,17 +40,12 @@
   background: #eee;
   border-radius: 4px;
   padding: 16px;
+}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 16px;
-    left: -13px;
-    width: 0;
-    height: 0;
-    border: 13px solid transparent;
-    border-right-color: #eee;
-  }
+.cardCorner {
+  position: absolute;
+  top: 20px;
+  left: -10px;
 }
 
 .title {

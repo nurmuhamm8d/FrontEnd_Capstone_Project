@@ -36,7 +36,7 @@ const persistStoredSkills = (skills: SkillApiItem[]) => {
 export const fetchSkills = createAsyncThunk('skills/fetch', async () => {
   const response = await fetch('/api/skills');
   if (!response.ok) {
-    throw new Error('Не удалось загрузить навыки');
+    throw new Error('Failed to load skills');
   }
   const serverSkills = (await response.json()) as SkillApiItem[];
   return [...serverSkills, ...readStoredSkills()];
@@ -50,7 +50,7 @@ export const addSkill = createAsyncThunk('skills/add', async (skill: SkillApiIte
   });
   if (!response.ok) {
     const body = (await response.json()) as { error?: string };
-    throw new Error(body.error ?? 'Не удалось сохранить навык');
+    throw new Error(body.error ?? 'Failed to save the skill');
   }
   const created = (await response.json()) as SkillApiItem;
   persistStoredSkills([...readStoredSkills(), created]);
@@ -73,7 +73,7 @@ const skillsSlice = createSlice({
       })
       .addCase(fetchSkills.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.error.message ?? 'Ошибка загрузки';
+        state.error = action.error.message ?? 'Loading error';
       })
       .addCase(addSkill.pending, (state) => {
         state.addStatus = 'loading';
@@ -85,7 +85,7 @@ const skillsSlice = createSlice({
       })
       .addCase(addSkill.rejected, (state, action) => {
         state.addStatus = 'failed';
-        state.addError = action.error.message ?? 'Ошибка сохранения';
+        state.addError = action.error.message ?? 'Save error';
       });
   },
 });

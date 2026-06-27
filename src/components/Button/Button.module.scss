@@ -24,6 +24,12 @@
   padding: 12px 28px;
   background: rgba(vars.$color-dark, 0.85);
   color: #fff;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    background: vars.$color-primary;
+  }
 }
 
 .ghost {

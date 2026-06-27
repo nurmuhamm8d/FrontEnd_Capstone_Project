@@ -18,46 +18,59 @@ const NAV_ITEMS = [
   { label: 'Feedback', id: 'feedback', Icon: FeedbacksIcon },
 ];
 
-export const Navigation = () => {
-  const [activeId, setActiveId] = useState<string | null>(null);
+export interface NavigationProps {
+  compact?: boolean;
+}
+
+export const Navigation = ({ compact = false }: NavigationProps) => {
+  const [activeId, setActiveId] = useState<string>(NAV_ITEMS[0].id);
 
   useEffect(() => {
-    if (typeof IntersectionObserver === 'undefined') {
-      return undefined;
-    }
-
     const sections = NAV_ITEMS.map(({ id }) => document.getElementById(id)).filter(
       (el): el is HTMLElement => el !== null
     );
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((entry) => entry.isIntersecting);
-        if (visible) {
-          setActiveId(visible.target.id);
-        }
-      },
-      { rootMargin: '-40% 0px -50% 0px' }
-    );
+    const handleScroll = () => {
+      const triggerLine = 120;
+      const scrollBottom = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const isScrollable = docHeight > window.innerHeight + 100;
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+      if (isScrollable && docHeight - scrollBottom < 8) {
+        setActiveId(NAV_ITEMS[NAV_ITEMS.length - 1].id);
+        return;
+      }
+
+      let current = NAV_ITEMS[0].id;
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top - triggerLine <= 0) {
+          current = section.id;
+        }
+      });
+      setActiveId(current);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <nav className={styles.nav}>
       <ul>
-        {NAV_ITEMS.map(({ label, id, Icon }) => (
-          <li key={id}>
-            <a
-              href={`#${id}`}
-              className={id === activeId ? `${styles.link} ${styles.active}` : styles.link}
-            >
-              <Icon className={styles.icon} aria-hidden="true" />
-              {label}
-            </a>
-          </li>
-        ))}
+        {NAV_ITEMS.map(({ label, id, Icon }) => {
+          const linkClass = [styles.link, id === activeId && styles.active, compact && styles.compact]
+            .filter(Boolean)
+            .join(' ');
+          return (
+            <li key={id}>
+              <a href={`#${id}`} className={linkClass} title={compact ? label : undefined}>
+                <Icon className={styles.icon} aria-hidden="true" />
+                {!compact && <span className={styles.label}>{label}</span>}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

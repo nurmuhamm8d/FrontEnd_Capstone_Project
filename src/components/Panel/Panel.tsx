@@ -13,17 +13,21 @@ export interface PanelProps {
   avatar: string;
 }
 
+const SIDEBAR_WIDTH = 250;
+
 const isDesktopViewport = () =>
   typeof window !== 'undefined' && window.innerWidth > 599;
 
-export const Panel = ({ name, title, avatar }: PanelProps) => {
+export const Panel = ({ name, avatar }: PanelProps) => {
   const [isOpen, setIsOpen] = useState(isDesktopViewport);
+  const [isMobile, setIsMobile] = useState(() => !isDesktopViewport());
   const navigate = useNavigate();
 
   useEffect(() => {
     let wasDesktop = isDesktopViewport();
     const handleResize = () => {
       const desktopNow = isDesktopViewport();
+      setIsMobile(!desktopNow);
       if (desktopNow !== wasDesktop) {
         wasDesktop = desktopNow;
         setIsOpen(desktopNow);
@@ -33,17 +37,21 @@ export const Panel = ({ name, title, avatar }: PanelProps) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const compact = isMobile && !isOpen;
+  const hamburgerLeft = isOpen ? SIDEBAR_WIDTH : 0;
+
   return (
     <>
       <button
         type="button"
         aria-label="Toggle navigation"
         className={styles.hamburger}
+        style={{ left: `${hamburgerLeft}px` }}
         onClick={() => setIsOpen((open) => !open)}
       >
         <FontAwesomeIcon icon={faBars} />
       </button>
-      {isOpen && !isDesktopViewport() && (
+      {isOpen && isMobile && (
         <div
           className={styles.backdrop}
           role="presentation"
@@ -55,11 +63,18 @@ export const Panel = ({ name, title, avatar }: PanelProps) => {
         className={isOpen ? `${styles.panel} ${styles.open}` : styles.panel}
       >
         <div className={styles.content}>
-          <PhotoBox name={name} title={title} description="" avatar={avatar} />
-          <Navigation />
-          <button type="button" className={styles.goBack} onClick={() => navigate('/')}>
+          <div className={compact ? `${styles.photo} ${styles.compactPhoto}` : styles.photo}>
+            <PhotoBox name={name} avatar={avatar} variant="sidebar" />
+          </div>
+          <Navigation compact={compact} />
+          <button
+            type="button"
+            className={compact ? `${styles.goBack} ${styles.goBackCompact}` : styles.goBack}
+            onClick={() => navigate('/')}
+            aria-label="Go back"
+          >
             <GoBackIcon className={styles.goBackIcon} aria-hidden="true" />
-            Go back
+            {!compact && <span>Go back</span>}
           </button>
         </div>
       </aside>

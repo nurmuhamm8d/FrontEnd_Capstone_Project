@@ -16,11 +16,11 @@ export const Education = () => {
   }, [status, dispatch]);
 
   if (status === 'loading' || status === 'idle') {
-    return <Spinner label="Загружаем образование…" />;
+    return <Spinner label="Loading education…" />;
   }
 
   if (status === 'failed') {
-    return <Notification type="error">{error ?? 'Не удалось загрузить раздел образования'}</Notification>;
+    return <Notification type="error">{error ?? 'Failed to load the education section'}</Notification>;
   }
 
   return (

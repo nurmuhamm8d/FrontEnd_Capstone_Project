@@ -15,10 +15,12 @@
 .meta {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 .date {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 400;
   color: vars.$color-text-muted;
   margin-top: 2px;
 }
@@ -37,6 +39,8 @@
 
 .description {
   font-size: 14px;
+  font-weight: 400;
   line-height: 1.5;
   margin: 0;
+  color: vars.$color-text-muted;
 }

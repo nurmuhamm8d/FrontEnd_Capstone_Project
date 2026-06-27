@@ -27,11 +27,11 @@ export const Inner = () => {
 
   return (
     <div className={styles.layout}>
-      <Panel name="Nurmukhamed" title="Front-end Developer" avatar="/assets/images/avatar.jpg" />
+      <Panel name="Nurmuhamed" title="Front-end Developer" avatar="/assets/images/avatar.jpg" />
       <main className={styles.content}>
         {SECTIONS.map(({ id, title, Component }) => (
           <section key={id} id={id} className={styles.section}>
-            <h2 className={styles.sectionTitle}>{title}</h2>
+            {id !== 'skills' && <h2 className={styles.sectionTitle}>{title}</h2>}
             <Component />
           </section>
         ))}
