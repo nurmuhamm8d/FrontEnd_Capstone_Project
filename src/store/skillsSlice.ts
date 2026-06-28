@@ -60,7 +60,12 @@ export const addSkill = createAsyncThunk('skills/add', async (skill: SkillApiIte
 const skillsSlice = createSlice({
   name: 'skills',
   initialState,
-  reducers: {},
+  reducers: {
+    removeSkill: (state, action: PayloadAction<string>) => {
+      state.items = state.items.filter((item) => item.name !== action.payload);
+      persistStoredSkills(readStoredSkills().filter((item) => item.name !== action.payload));
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchSkills.pending, (state) => {
@@ -90,4 +95,5 @@ const skillsSlice = createSlice({
   },
 });
 
+export const { removeSkill } = skillsSlice.actions;
 export default skillsSlice.reducer;

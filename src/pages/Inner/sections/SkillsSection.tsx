@@ -5,7 +5,7 @@ import { AddSkillForm } from '../../../components/AddSkillForm/AddSkillForm';
 import { Spinner } from '../../../components/Spinner/Spinner';
 import { Notification } from '../../../components/Notification/Notification';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { fetchSkills } from '../../../store/skillsSlice';
+import { fetchSkills, removeSkill } from '../../../store/skillsSlice';
 import styles from './SkillsSection.module.scss';
 
 export const SkillsSection = () => {
@@ -37,7 +37,7 @@ export const SkillsSection = () => {
         </button>
       </div>
       {isEditOpen && <AddSkillForm />}
-      <Skills data={items} />
+      <Skills data={items} onRemove={isEditOpen ? (name) => dispatch(removeSkill(name)) : undefined} />
     </>
   );
 };

@@ -2,12 +2,8 @@
 
 .timeline {
   position: relative;
-  max-height: 80vh;
-  overflow-y: auto;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  padding-right: 8px;
 }
 
 .timeline__item {
