@@ -64,4 +64,19 @@
   border-top: 1px solid rgba(34, 41, 53, 0.15);
   font-size: 13px;
   color: vars.$color-text-muted;
+
+  span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 10px;
+      background: #667081;
+    }
+  }
 }

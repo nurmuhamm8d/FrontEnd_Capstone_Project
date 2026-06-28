@@ -103,16 +103,12 @@
   cursor: pointer;
   white-space: nowrap;
   border-radius: 0;
-  padding: 0;
-  height: 17px;
-  transition: background-color 0.2s ease;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease, border-radius 0.2s ease;
 
   &:hover {
     background: vars.$color-primary;
-    color: #ffffff;
     border-radius: 5px;
-    padding: 4px 8px;
-    height: auto;
   }
 }
 
