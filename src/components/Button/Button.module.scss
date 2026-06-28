@@ -14,13 +14,13 @@
   }
 }
 
-.primary {
+.button--primary {
   padding: 10px 20px;
   background: vars.$color-primary;
   color: #fff;
 }
 
-.overlay {
+.button--overlay {
   padding: 12px 28px;
   background: rgba(vars.$color-dark, 0.85);
   color: #fff;
@@ -32,7 +32,7 @@
   }
 }
 
-.ghost {
+.button--ghost {
   padding: 8px 0;
   background: transparent;
   color: vars.$color-text-light;
@@ -43,6 +43,6 @@
   }
 }
 
-.icon {
+.button__icon {
   font-size: 14px;
 }

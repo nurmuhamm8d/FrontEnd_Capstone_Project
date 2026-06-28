@@ -10,9 +10,9 @@
   padding-right: 8px;
 }
 
-.rail {
+.timeline__rail {
   position: absolute;
-  top: 38px;
+  top: 50px;
   bottom: 32px;
   left: 35px;
   width: 4px;
@@ -20,14 +20,14 @@
   background: vars.$color-primary;
 }
 
-.item {
+.timeline__item {
   display: grid;
   grid-template-columns: 70px 1fr;
   column-gap: 10px;
   padding-bottom: 24px;
 }
 
-.date {
+.timeline__date {
   font-weight: 700;
   font-size: 15px;
   color: vars.$color-text;
@@ -35,27 +35,36 @@
   text-align: center;
 }
 
-.card {
+.timeline__card {
   position: relative;
   background: #eee;
-  border-radius: 4px;
-  padding: 16px;
+  min-height: 138px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.cardCorner {
+.timeline__corner {
   position: absolute;
   top: 20px;
-  left: -10px;
+  left: -7px;
 }
 
-.title {
+.timeline__title {
+  font-family: 'Open Sans', Arial, sans-serif;
   font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 8px;
+  font-weight: 700;
+  line-height: 120%;
+  color: vars.$color-text;
+  margin: 0;
 }
 
-.text {
+.timeline__text {
+  font-family: 'Open Sans', Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 150%;
+  color: vars.$color-text;
   margin: 0;
 }

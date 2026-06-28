@@ -12,9 +12,15 @@ export interface ButtonProps {
   variant?: ButtonVariant;
 }
 
+const variantClass: Record<ButtonVariant, string> = {
+  primary: styles['button--primary'],
+  overlay: styles['button--overlay'],
+  ghost: styles['button--ghost'],
+};
+
 export const Button = ({ icon, text, onClick, type = 'button', variant = 'primary' }: ButtonProps) => (
-  <button type={type} className={`${styles.button} ${styles[variant]}`} onClick={onClick}>
-    {icon && <FontAwesomeIcon icon={icon} className={styles.icon} />}
+  <button type={type} className={`${styles.button} ${variantClass[variant]}`} onClick={onClick}>
+    {icon && <FontAwesomeIcon icon={icon} className={styles['button__icon']} />}
     <span>{text}</span>
   </button>
 );

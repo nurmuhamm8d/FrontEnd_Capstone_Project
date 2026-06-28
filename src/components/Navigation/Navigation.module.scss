@@ -8,10 +8,13 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 }
 
-.link {
+.nav__link {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -36,7 +39,13 @@
   }
 }
 
-.compact {
+.nav__link--active {
+  color: vars.$color-primary;
+  border-left-color: vars.$color-primary;
+  background: rgba(38, 193, 126, 0.12);
+}
+
+.nav__link--compact {
   justify-content: center;
   padding: 12px 0;
   border-left: none;
@@ -46,18 +55,12 @@
   }
 }
 
-.icon {
+.nav__icon {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
 }
 
-.label {
+.nav__label {
   white-space: nowrap;
-}
-
-.active {
-  color: vars.$color-primary;
-  border-left-color: vars.$color-primary;
-  background: rgba(38, 193, 126, 0.12);
 }

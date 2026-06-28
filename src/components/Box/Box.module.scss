@@ -4,14 +4,14 @@
   padding: 0;
 }
 
-.title {
+.box__title {
   margin-bottom: 12px;
   font-size: 20px;
   font-weight: 700;
   color: vars.$color-primary;
 }
 
-.content {
+.box__content {
   font-size: 16px;
   line-height: 1.5;
 }

@@ -1,13 +1,13 @@
 @use '../../../assets/styles/variables' as vars;
 
-.header {
+.skills-section__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.sectionTitle {
+.skills-section__title {
   color: vars.$color-primary;
   font-family: 'Open Sans', Arial, sans-serif;
   font-size: 25px;
@@ -16,7 +16,7 @@
   margin: 0;
 }
 
-.openEdit {
+.skills-section__open-edit {
   display: flex;
   align-items: center;
   gap: 8px;

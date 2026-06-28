@@ -9,19 +9,19 @@ export interface SkillsProps {
 
 export const Skills = ({ data }: SkillsProps) => (
   <div className={styles.skills}>
-    <ul className={styles.bars}>
+    <ul className={styles['skills__bars']}>
       {data.map(({ name, range, children }) => (
         <li key={name}>
-          <div className={styles.row}>
-            <span className={styles.bar} style={{ width: `${range}%` }}>
+          <div className={styles['skills__row']}>
+            <span className={styles['skills__bar']} style={{ width: `${range}%` }}>
               {name}
             </span>
           </div>
           {children && (
-            <ul className={styles.subBars}>
+            <ul className={styles['skills__sub-bars']}>
               {children.map((child) => (
-                <li key={child.name} className={styles.row}>
-                  <span className={styles.subBar} style={{ width: `${child.range}%` }}>
+                <li key={child.name} className={styles['skills__row']}>
+                  <span className={styles['skills__sub-bar']} style={{ width: `${child.range}%` }}>
                     {child.name}
                   </span>
                 </li>
@@ -31,7 +31,7 @@ export const Skills = ({ data }: SkillsProps) => (
         </li>
       ))}
     </ul>
-    <div className={styles.scale}>
+    <div className={styles['skills__scale']}>
       {SCALE_LABELS.map((label) => (
         <span key={label}>{label}</span>
       ))}

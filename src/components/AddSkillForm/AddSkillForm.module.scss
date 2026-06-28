@@ -1,6 +1,6 @@
 @use '../../assets/styles/variables' as vars;
 
-.form {
+.add-skill-form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,7 +10,7 @@
   position: relative;
 }
 
-.field {
+.add-skill-form__field {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -23,7 +23,7 @@
     margin-top: 0;
   }
 
-  & + .field {
+  & + .add-skill-form__field {
     margin-top: 20px;
   }
 
@@ -63,14 +63,14 @@
   }
 }
 
-.fieldError {
+.add-skill-form__field-error {
   color: #a02020;
   font-size: 12px;
   margin-top: 4px;
   margin-left: 91px;
 }
 
-.submit {
+.add-skill-form__submit {
   width: 103px;
   height: 40px;
   margin-top: 20px;

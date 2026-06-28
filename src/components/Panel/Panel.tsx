@@ -13,7 +13,9 @@ export interface PanelProps {
   avatar: string;
 }
 
-const SIDEBAR_WIDTH = 250;
+const DESKTOP_WIDTH = 250;
+const MOBILE_OPEN_WIDTH = 240;
+const MOBILE_RAIL_WIDTH = 60;
 
 const isDesktopViewport = () =>
   typeof window !== 'undefined' && window.innerWidth > 599;
@@ -38,14 +40,16 @@ export const Panel = ({ name, avatar }: PanelProps) => {
   }, []);
 
   const compact = isMobile && !isOpen;
-  const hamburgerLeft = isOpen ? SIDEBAR_WIDTH : 0;
+  const hamburgerLeft = isMobile
+    ? (isOpen ? MOBILE_OPEN_WIDTH : MOBILE_RAIL_WIDTH)
+    : (isOpen ? DESKTOP_WIDTH : 0);
 
   return (
     <>
       <button
         type="button"
         aria-label="Toggle navigation"
-        className={styles.hamburger}
+        className={styles['panel__hamburger']}
         style={{ left: `${hamburgerLeft}px` }}
         onClick={() => setIsOpen((open) => !open)}
       >
@@ -53,27 +57,27 @@ export const Panel = ({ name, avatar }: PanelProps) => {
       </button>
       {isOpen && isMobile && (
         <div
-          className={styles.backdrop}
+          className={styles['panel__backdrop']}
           role="presentation"
           onClick={() => setIsOpen(false)}
         />
       )}
       <aside
         data-testid="panel"
-        className={isOpen ? `${styles.panel} ${styles.open}` : styles.panel}
+        className={isOpen ? `${styles.panel} ${styles['panel--open']}` : styles.panel}
       >
-        <div className={styles.content}>
-          <div className={compact ? `${styles.photo} ${styles.compactPhoto}` : styles.photo}>
+        <div className={styles['panel__content']}>
+          <div className={compact ? `${styles['panel__photo']} ${styles['panel__photo--compact']}` : styles['panel__photo']}>
             <PhotoBox name={name} avatar={avatar} variant="sidebar" />
           </div>
           <Navigation compact={compact} />
           <button
             type="button"
-            className={compact ? `${styles.goBack} ${styles.goBackCompact}` : styles.goBack}
+            className={compact ? `${styles['panel__go-back']} ${styles['panel__go-back--compact']}` : styles['panel__go-back']}
             onClick={() => navigate('/')}
             aria-label="Go back"
           >
-            <GoBackIcon className={styles.goBackIcon} aria-hidden="true" />
+            <GoBackIcon className={styles['panel__go-back-icon']} aria-hidden="true" />
             {!compact && <span>Go back</span>}
           </button>
         </div>

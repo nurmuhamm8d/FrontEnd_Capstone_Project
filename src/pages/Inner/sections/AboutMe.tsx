@@ -1,7 +1,7 @@
 import styles from './AboutMe.module.scss';
 
 export const AboutMe = () => (
-  <div className={styles.aboutMe}>
+  <div className={styles['about-me']}>
     <p>
       Front-end developer in training on the EPAM Tech Orda track, with a focus on building production-quality
       React and TypeScript applications that are both maintainable and accessible. My approach combines

@@ -6,16 +6,16 @@ export interface ExpertiseProps {
 }
 
 export const Expertise = ({ data }: ExpertiseProps) => (
-  <ul className={styles.list}>
+  <ul className={styles.expertise}>
     {data.map(({ date, info }) => (
-      <li key={`${date}-${info.company}`} className={styles.item}>
-        <div className={styles.meta}>
-          <h3 className={styles.company}>{info.company}</h3>
-          <span className={styles.date}>{date}</span>
+      <li key={`${date}-${info.company}`} className={styles['expertise__item']}>
+        <div className={styles['expertise__meta']}>
+          <h3 className={styles['expertise__company']}>{info.company}</h3>
+          <span className={styles['expertise__date']}>{date}</span>
         </div>
-        <div className={styles.details}>
-          <h4 className={styles.job}>{info.job}</h4>
-          <p className={styles.description}>{info.description}</p>
+        <div className={styles['expertise__details']}>
+          <h4 className={styles['expertise__job']}>{info.job}</h4>
+          <p className={styles['expertise__description']}>{info.description}</p>
         </div>
       </li>
     ))}

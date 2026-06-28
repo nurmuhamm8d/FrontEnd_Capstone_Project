@@ -5,8 +5,8 @@ export interface SpinnerProps {
 }
 
 export const Spinner = ({ label = 'Загрузка…' }: SpinnerProps) => (
-  <div className={styles.wrapper} role="status">
-    <span className={styles.circle} aria-hidden="true" />
-    <span className={styles.label}>{label}</span>
+  <div className={styles.spinner} role="status">
+    <span className={styles['spinner__circle']} aria-hidden="true" />
+    <span className={styles['spinner__label']}>{label}</span>
   </div>
 );

@@ -7,7 +7,7 @@ export const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.hero}>
+    <div className={styles.home}>
       <PhotoBox
         name="Nurmuhamed"
         title="Front-end Developer. AI tooling enthusiast. Builder."

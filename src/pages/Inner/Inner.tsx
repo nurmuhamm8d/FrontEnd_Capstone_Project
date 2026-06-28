@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { Panel } from '../../components/Panel/Panel';
@@ -21,21 +22,38 @@ const SECTIONS = [
 ];
 
 export const Inner = () => {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowBackToTop(window.scrollY > 200);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleBackToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className={styles.layout}>
+    <div className={styles.inner}>
       <Panel name="Nurmuhamed" title="Front-end Developer" avatar="/assets/images/avatar.jpg" />
-      <main className={styles.content}>
+      <main className={styles['inner__content']}>
         {SECTIONS.map(({ id, title, Component }) => (
-          <section key={id} id={id} className={styles.section}>
-            {id !== 'skills' && <h2 className={styles.sectionTitle}>{title}</h2>}
+          <section key={id} id={id} className={styles['inner__section']}>
+            {id !== 'skills' && <h2 className={styles['inner__section-title']}>{title}</h2>}
             <Component />
           </section>
         ))}
-        <button type="button" aria-label="Back to top" className={styles.backToTop} onClick={handleBackToTop}>
+        <button
+          type="button"
+          aria-label="Back to top"
+          className={
+            showBackToTop
+              ? `${styles['inner__back-to-top']} ${styles['inner__back-to-top--visible']}`
+              : styles['inner__back-to-top']
+          }
+          onClick={handleBackToTop}
+        >
           <FontAwesomeIcon icon={faChevronUp} />
         </button>
       </main>

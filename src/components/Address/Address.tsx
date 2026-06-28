@@ -26,32 +26,32 @@ const SOCIAL_ICONS: Record<string, typeof TwitterIcon> = {
 
 export const Address = ({ email, phone, location, socials = [] }: AddressProps) => (
   <address className={styles.address}>
-    <p className={styles.row}>
-      <PhoneIcon className={styles.icon} aria-hidden="true" />
-      <a href={`tel:${phone}`} className={styles.primary}>
+    <p className={styles['address__row']}>
+      <PhoneIcon className={styles['address__icon']} aria-hidden="true" />
+      <a href={`tel:${phone}`} className={styles['address__primary']}>
         {phone}
       </a>
     </p>
-    <p className={styles.row}>
-      <EmailIcon className={styles.icon} aria-hidden="true" />
-      <a href={`mailto:${email}`} className={styles.primary}>
+    <p className={styles['address__row']}>
+      <EmailIcon className={styles['address__icon']} aria-hidden="true" />
+      <a href={`mailto:${email}`} className={styles['address__primary']}>
         {email}
       </a>
     </p>
     {socials.map(({ label, value, url }) => {
       const Icon = SOCIAL_ICONS[label];
       return (
-        <p className={styles.row} key={label}>
-          {Icon && <Icon className={styles.icon} aria-hidden="true" />}
-          <span className={styles.socialText}>
-            <span className={styles.primary}>{label}</span>
-            <a href={url} target="_blank" rel="noreferrer" className={styles.secondary}>
+        <p className={styles['address__row']} key={label}>
+          {Icon && <Icon className={styles['address__icon']} aria-hidden="true" />}
+          <span className={styles['address__social-text']}>
+            <span className={styles['address__primary']}>{label}</span>
+            <a href={url} target="_blank" rel="noreferrer" className={styles['address__secondary']}>
               {value}
             </a>
           </span>
         </p>
       );
     })}
-    {location && <p className={styles.location}>{location}</p>}
+    {location && <p className={styles['address__location']}>{location}</p>}
   </address>
 );

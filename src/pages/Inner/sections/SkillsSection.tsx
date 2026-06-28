@@ -29,9 +29,9 @@ export const SkillsSection = () => {
 
   return (
     <>
-      <div className={styles.header}>
-        <h2 className={styles.sectionTitle}>Skills</h2>
-        <button type="button" className={styles.openEdit} onClick={() => setIsEditOpen((open) => !open)}>
+      <div className={styles['skills-section__header']}>
+        <h2 className={styles['skills-section__title']}>Skills</h2>
+        <button type="button" className={styles['skills-section__open-edit']} onClick={() => setIsEditOpen((open) => !open)}>
           <EditIcon aria-hidden="true" />
           <span>Open edit</span>
         </button>

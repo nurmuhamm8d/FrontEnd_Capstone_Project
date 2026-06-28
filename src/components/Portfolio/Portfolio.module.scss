@@ -1,18 +1,29 @@
 @use '../../assets/styles/variables' as vars;
 @use '../../assets/styles/mixins' as mix;
 
-.tabs {
+@keyframes portfolio-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.portfolio__tabs {
   display: flex;
   gap: 6px;
   margin-bottom: 24px;
 }
 
-.tabWrap {
+.portfolio__tab-wrap {
   display: inline-flex;
   align-items: center;
 }
 
-.tab {
+.portfolio__tab {
   padding: 0;
   border: none;
   background: none;
@@ -24,32 +35,36 @@
   &:hover {
     color: vars.$color-primary;
   }
-
-  &.active {
-    color: vars.$color-primary;
-  }
 }
 
-.separator {
+.portfolio__tab--active {
+  color: vars.$color-primary;
+}
+
+.portfolio__separator {
   margin-left: 6px;
   color: vars.$color-text;
   font-weight: 400;
 }
 
-.grid {
+.portfolio__grid {
   --gap: clamp(8px, 1.25vw, 16px);
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.item {
+.portfolio__item {
   position: relative;
   flex: 0 1 calc(25% - var(--gap) * 3 / 4);
   border-radius: 0;
   overflow: hidden;
   cursor: pointer;
-  transition: flex-basis 0.35s ease, transform 0.35s ease, opacity 0.35s ease;
+  transition: flex-basis 0.35s ease, transform 0.35s ease, opacity 0.35s ease, max-height 0.35s ease;
+  animation: portfolio-slide-in 0.3s ease;
 
   @include mix.tablet {
     flex-basis: calc(50% - var(--gap) / 2);
@@ -59,22 +74,24 @@
     flex-basis: 100%;
   }
 
-  &:hover,
-  &:focus-within {
-    .overlay {
-      opacity: 1;
-    }
-  }
-
-  &.hidden {
-    flex-basis: 0;
-    transform: scale(0.5);
-    opacity: 0;
-    pointer-events: none;
+  &:hover .portfolio__overlay,
+  &:focus-within .portfolio__overlay {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
-.image {
+.portfolio__item--hidden {
+  flex-basis: 0 !important;
+  max-height: 0;
+  transform: scale(0.5);
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.portfolio__image {
   display: block;
   width: 100%;
   aspect-ratio: 308 / 190;
@@ -82,7 +99,7 @@
   object-fit: cover;
 }
 
-.overlay {
+.portfolio__overlay {
   position: absolute;
   inset: 0;
   display: flex;
@@ -93,29 +110,25 @@
   background: rgba(255, 255, 255, 0.95);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transform: translateY(100%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.item:hover .overlay,
-.item:focus-within .overlay {
-  pointer-events: auto;
-}
-
-.title {
+.portfolio__title {
   font-size: 16px;
   font-weight: 700;
   color: vars.$color-primary;
   margin: 0;
 }
 
-.description {
+.portfolio__description {
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
   color: vars.$color-text;
 }
 
-.link {
+.portfolio__link {
   font-size: 14px;
   font-weight: 600;
   color: vars.$color-primary;

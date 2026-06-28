@@ -4,32 +4,32 @@
   font-style: normal;
 }
 
-.row {
+.address__row {
   display: flex;
   align-items: center;
   gap: 14px;
   margin-bottom: 20px;
 }
 
-.icon {
+.address__icon {
   width: 22px;
   height: 22px;
   flex-shrink: 0;
 }
 
-.primary {
+.address__primary {
   font-size: 15px;
   font-weight: 700;
   color: vars.$color-text;
 }
 
-.socialText {
+.address__social-text {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.secondary {
+.address__secondary {
   font-size: 13px;
   color: vars.$color-text-muted;
 
@@ -38,11 +38,11 @@
   }
 }
 
-a.primary:hover {
+a.address__primary:hover {
   text-decoration: underline;
 }
 
-.location {
+.address__location {
   font-size: 13px;
   color: vars.$color-text-muted;
 }

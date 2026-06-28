@@ -1,23 +1,23 @@
 @use '../../assets/styles/variables' as vars;
 @use '../../assets/styles/mixins' as mix;
 
-.layout {
+.inner {
   display: flex;
   min-height: 100vh;
 }
 
-.content {
+.inner__content {
   flex: 1;
   min-width: 0;
   padding: 32px 48px;
   position: relative;
 
   @include mix.mobile {
-    padding: 24px 16px 16px calc(clamp(64px, 19.5vw, 80px) + 16px);
+    padding: 24px 16px 16px 76px;
   }
 }
 
-.section {
+.inner__section {
   margin-bottom: 56px;
   scroll-margin-top: 24px;
 
@@ -26,7 +26,7 @@
   }
 }
 
-.sectionTitle {
+.inner__section-title {
   color: vars.$color-primary;
   font-size: 28px;
   margin: 0 0 20px;
@@ -36,7 +36,7 @@
   }
 }
 
-.backToTop {
+.inner__back-to-top {
   position: fixed;
   bottom: 0;
   right: 2.81vw;
@@ -49,9 +49,20 @@
   background: vars.$color-dark;
   color: #fff;
   font-size: 14px;
-  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
 
   &:hover {
     background: vars.$color-primary;
   }
+}
+
+.inner__back-to-top--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }

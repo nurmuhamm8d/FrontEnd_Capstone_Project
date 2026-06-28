@@ -1,55 +1,59 @@
 @use '../../assets/styles/variables' as vars;
 
-.list {
+.feedback {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 15px;
 }
 
-.item {
+.feedback__item {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.quote {
+  gap: 15px;
+  padding: 15px;
   background: #eee;
-  border-radius: 4px;
-  padding: 20px 24px;
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: vars.$color-text;
+  border-radius: 0;
 }
 
-.reporter {
+.feedback__quote {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+  color: vars.$color-text;
+  margin: 0;
+}
+
+.feedback__reporter {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
-.photo {
-  width: clamp(56px, 6vw, 80px);
-  height: clamp(56px, 6vw, 80px);
+.feedback__photo {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
 }
 
-.byline {
+.feedback__byline {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 120%;
+  color: vars.$color-text;
   margin: 0;
-  font-size: 14px;
-  color: vars.$color-text;
 }
 
-.name {
+.feedback__name {
   font-weight: 700;
-  color: vars.$color-text;
 }
 
-.link {
+.feedback__link {
   color: vars.$color-primary;
-  font-weight: 600;
+  text-decoration: none;
 
   &:hover {
     text-decoration: underline;

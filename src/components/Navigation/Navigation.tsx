@@ -59,14 +59,18 @@ export const Navigation = ({ compact = false }: NavigationProps) => {
     <nav className={styles.nav}>
       <ul>
         {NAV_ITEMS.map(({ label, id, Icon }) => {
-          const linkClass = [styles.link, id === activeId && styles.active, compact && styles.compact]
+          const linkClass = [
+            styles['nav__link'],
+            id === activeId && styles['nav__link--active'],
+            compact && styles['nav__link--compact'],
+          ]
             .filter(Boolean)
             .join(' ');
           return (
             <li key={id}>
               <a href={`#${id}`} className={linkClass} title={compact ? label : undefined}>
-                <Icon className={styles.icon} aria-hidden="true" />
-                {!compact && <span className={styles.label}>{label}</span>}
+                <Icon className={styles['nav__icon']} aria-hidden="true" />
+                {!compact && <span className={styles['nav__label']}>{label}</span>}
               </a>
             </li>
           );

@@ -10,18 +10,18 @@ export interface PhotoBoxProps {
 }
 
 export const PhotoBox = ({ name, title, description, avatar, variant = 'hero' }: PhotoBoxProps) => (
-  <div className={variant === 'sidebar' ? `${styles.photoBox} ${styles.sidebarBox}` : styles.photoBox}>
+  <div className={variant === 'sidebar' ? `${styles['photo-box']} ${styles['photo-box--sidebar']}` : styles['photo-box']}>
     <img
-      className={variant === 'sidebar' ? `${styles.avatar} ${styles.sidebarAvatar}` : styles.avatar}
+      className={variant === 'sidebar' ? `${styles['photo-box__avatar']} ${styles['photo-box__avatar--sidebar']}` : styles['photo-box__avatar']}
       src={avatar}
       alt={name}
     />
-    <h1 className={variant === 'sidebar' ? `${styles.name} ${styles.sidebarName}` : styles.name}>{name}</h1>
-    {title && (
-      <h2 className={styles.title}>{title}</h2>
-    )}
+    <h1 className={variant === 'sidebar' ? `${styles['photo-box__name']} ${styles['photo-box__name--sidebar']}` : styles['photo-box__name']}>
+      {name}
+    </h1>
+    {title && <h2 className={styles['photo-box__title']}>{title}</h2>}
     {description && (
-      <div className={styles.description}>
+      <div className={styles['photo-box__description']}>
         <Info text={description} />
       </div>
     )}

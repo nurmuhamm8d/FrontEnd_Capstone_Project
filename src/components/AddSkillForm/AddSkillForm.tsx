@@ -39,18 +39,18 @@ export const AddSkillForm = () => {
       }}
     >
       {({ isSubmitting }) => (
-        <Form className={styles.form}>
-          <div className={styles.field}>
+        <Form className={styles['add-skill-form']}>
+          <div className={styles['add-skill-form__field']}>
             <label htmlFor="skill-name">Skill name:</label>
             <Field id="skill-name" name="name" type="text" placeholder="Enter skill name" />
           </div>
-          <ErrorMessage name="name" component="span" className={styles.fieldError} />
-          <div className={styles.field}>
+          <ErrorMessage name="name" component="span" className={styles['add-skill-form__field-error']} />
+          <div className={styles['add-skill-form__field']}>
             <label htmlFor="skill-range">Skill range:</label>
             <Field id="skill-range" name="range" type="number" min={1} max={100} placeholder="Enter skill range" />
           </div>
-          <ErrorMessage name="range" component="span" className={styles.fieldError} />
-          <button type="submit" className={styles.submit} disabled={isSubmitting}>
+          <ErrorMessage name="range" component="span" className={styles['add-skill-form__field-error']} />
+          <button type="submit" className={styles['add-skill-form__submit']} disabled={isSubmitting}>
             Add skill
           </button>
           {addStatus === 'failed' && (

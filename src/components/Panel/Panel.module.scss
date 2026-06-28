@@ -17,32 +17,34 @@
     position: fixed;
     inset: 0 auto 0 0;
     z-index: 14;
-    width: 0;
-    transform: translateX(0);
+    width: 60px;
+    overflow: visible;
   }
 }
 
-.open {
+.panel--open {
   width: 250px;
 
   @include mix.mobile {
     width: 240px;
+    overflow: hidden;
   }
 }
 
-.backdrop {
+.panel__backdrop {
   position: fixed;
   inset: 0;
   z-index: 13;
   background: rgba(0, 0, 0, 0.4);
 }
 
-.hamburger {
+.panel__hamburger {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 30px;
   height: 30px;
+  border-radius: 2px;
   position: fixed;
   top: 20px;
   left: 0;
@@ -55,7 +57,7 @@
   flex-shrink: 0;
 }
 
-.content {
+.panel__content {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -64,7 +66,7 @@
   overflow-x: hidden;
 }
 
-.photo {
+.panel__photo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +74,7 @@
   flex-shrink: 0;
 }
 
-.compactPhoto {
+.panel__photo--compact {
   h1 {
     display: none;
   }
@@ -83,7 +85,7 @@
   }
 }
 
-.goBack {
+.panel__go-back {
   position: absolute;
   left: 73px;
   bottom: 31px;
@@ -100,7 +102,8 @@
   cursor: pointer;
   white-space: nowrap;
   border-radius: 0;
-  padding: 4px 8px;
+  padding: 0;
+  height: 17px;
   transition: background-color 0.2s ease;
 
   &:hover {
@@ -109,7 +112,7 @@
   }
 }
 
-.goBackCompact {
+.panel__go-back--compact {
   left: 50%;
   transform: translateX(-50%);
   justify-content: center;
@@ -132,7 +135,7 @@
   }
 }
 
-.goBackIcon {
+.panel__go-back-icon {
   width: 10px;
   height: 10px;
   flex-shrink: 0;
