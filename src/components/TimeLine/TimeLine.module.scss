@@ -10,21 +10,23 @@
   padding-right: 8px;
 }
 
-.timeline__rail {
-  position: absolute;
-  top: 50px;
-  bottom: 32px;
-  left: 35px;
-  width: 4px;
-  border-radius: 2px;
-  background: vars.$color-primary;
-}
-
 .timeline__item {
+  position: relative;
   display: grid;
   grid-template-columns: 70px 1fr;
   column-gap: 10px;
   padding-bottom: 24px;
+
+  &:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 49px;
+    bottom: 0;
+    left: 33px;
+    width: 4px;
+    background: vars.$color-primary;
+    border-radius: 2px;
+  }
 }
 
 .timeline__date {

@@ -22,37 +22,25 @@
   color: vars.$color-text-light;
   font-size: 15px;
   font-weight: 600;
-  border-left: 3px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  transition: color 0.2s ease;
   text-decoration: none;
 
   &:hover {
     color: vars.$color-primary;
-    background: rgba(38, 193, 126, 0.12);
-    border-left-color: vars.$color-primary;
   }
 
   &:active {
     color: vars.$color-primary;
-    background: rgba(38, 193, 126, 0.2);
-    border-left-color: vars.$color-primary;
   }
 }
 
 .nav__link--active {
   color: vars.$color-primary;
-  border-left-color: vars.$color-primary;
-  background: rgba(38, 193, 126, 0.12);
 }
 
 .nav__link--compact {
   justify-content: center;
   padding: 12px 0;
-  border-left: none;
-
-  &:hover {
-    border-left: none;
-  }
 }
 
 .nav__icon {

@@ -51,27 +51,27 @@
   --gap: clamp(8px, 1.25vw, 16px);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap);
   list-style: none;
-  margin: 0;
+  margin: calc(var(--gap) / -2);
   padding: 0;
 }
 
 .portfolio__item {
   position: relative;
-  flex: 0 1 calc(25% - var(--gap) * 3 / 4);
+  flex: 0 1 calc(25% - var(--gap));
+  margin: calc(var(--gap) / 2);
   border-radius: 0;
   overflow: hidden;
   cursor: pointer;
-  transition: flex-basis 0.35s ease, transform 0.35s ease, opacity 0.35s ease, max-height 0.35s ease;
+  transition: flex 0.35s ease, transform 0.35s ease, opacity 0.35s ease, max-height 0.35s ease, margin 0.35s ease;
   animation: portfolio-slide-in 0.3s ease;
 
   @include mix.tablet {
-    flex-basis: calc(50% - var(--gap) / 2);
+    flex-basis: calc(50% - var(--gap));
   }
 
   @include mix.mobile {
-    flex-basis: 100%;
+    flex-basis: calc(100% - var(--gap));
   }
 
   &:hover .portfolio__overlay,
@@ -83,12 +83,13 @@
 }
 
 .portfolio__item--hidden {
-  flex-basis: 0 !important;
+  flex: 0 0 0 !important;
   max-height: 0;
   transform: scale(0.5);
   opacity: 0;
   pointer-events: none;
   overflow: hidden;
+  margin: 0 !important;
 }
 
 .portfolio__image {

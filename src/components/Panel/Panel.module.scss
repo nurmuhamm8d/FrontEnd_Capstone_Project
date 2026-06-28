@@ -52,6 +52,7 @@
   background: vars.$color-dark;
   color: #fff;
   border: none;
+  outline: none;
   cursor: pointer;
   transition: left 0.25s ease;
   flex-shrink: 0;
@@ -109,6 +110,9 @@
   &:hover {
     background: vars.$color-primary;
     color: #ffffff;
+    border-radius: 5px;
+    padding: 4px 8px;
+    height: auto;
   }
 }
 

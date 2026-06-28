@@ -8,7 +8,6 @@ export interface TimeLineProps {
 
 export const TimeLine = ({ data }: TimeLineProps) => (
   <ul className={styles.timeline}>
-    <span className={styles['timeline__rail']} aria-hidden="true" />
     {data.map(({ date, title, text }) => (
       <li key={`${date}-${title}`} className={styles['timeline__item']}>
         <span className={styles['timeline__date']}>{date}</span>
