@@ -13,6 +13,8 @@ export interface PanelProps {
   avatar: string;
 }
 
+type MobileMode = 'compact' | 'expanded' | 'hidden';
+
 const DESKTOP_WIDTH = 250;
 const MOBILE_OPEN_WIDTH = 240;
 const MOBILE_RAIL_WIDTH = 60;
@@ -21,28 +23,58 @@ const isDesktopViewport = () =>
   typeof window !== 'undefined' && window.innerWidth > 599 && window.innerHeight > 500;
 
 export const Panel = ({ name, avatar }: PanelProps) => {
-  const [isOpen, setIsOpen] = useState(isDesktopViewport);
-  const [isMobile, setIsMobile] = useState(() => !isDesktopViewport());
+  const [isDesktop, setIsDesktop] = useState(isDesktopViewport);
+  const [desktopOpen, setDesktopOpen] = useState(isDesktopViewport);
+  const [mobileMode, setMobileMode] = useState<MobileMode>('compact');
   const navigate = useNavigate();
 
   useEffect(() => {
     let wasDesktop = isDesktopViewport();
     const handleResize = () => {
       const desktopNow = isDesktopViewport();
-      setIsMobile(!desktopNow);
+      setIsDesktop(desktopNow);
       if (desktopNow !== wasDesktop) {
         wasDesktop = desktopNow;
-        setIsOpen(desktopNow);
+        if (desktopNow) {
+          setDesktopOpen(true);
+        } else {
+          setMobileMode('compact');
+        }
       }
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const compact = isMobile && !isOpen;
-  const hamburgerLeft = isMobile
-    ? (isOpen ? MOBILE_OPEN_WIDTH : MOBILE_RAIL_WIDTH)
-    : (isOpen ? DESKTOP_WIDTH : 0);
+  const handleToggle = () => {
+    if (isDesktop) {
+      setDesktopOpen((prev) => !prev);
+    } else {
+      setMobileMode((prev) =>
+        prev === 'compact' ? 'expanded' : prev === 'expanded' ? 'hidden' : 'compact'
+      );
+    }
+  };
+
+  const compact = !isDesktop && mobileMode === 'compact';
+  const showBackdrop = !isDesktop && mobileMode === 'expanded';
+
+  const panelClass = (() => {
+    if (isDesktop) {
+      return desktopOpen
+        ? `${styles.panel} ${styles['panel--open']}`
+        : styles.panel;
+    }
+    if (mobileMode === 'compact') return `${styles.panel} ${styles['panel--mobile-compact']}`;
+    if (mobileMode === 'expanded') return `${styles.panel} ${styles['panel--open']}`;
+    return styles.panel;
+  })();
+
+  const hamburgerLeft = isDesktop
+    ? desktopOpen ? DESKTOP_WIDTH : 0
+    : mobileMode === 'expanded' ? MOBILE_OPEN_WIDTH
+    : mobileMode === 'compact' ? MOBILE_RAIL_WIDTH
+    : 0;
 
   return (
     <>
@@ -51,30 +83,40 @@ export const Panel = ({ name, avatar }: PanelProps) => {
         aria-label="Toggle navigation"
         className={styles['panel__hamburger']}
         style={{ left: `${hamburgerLeft}px` }}
-        onClick={() => setIsOpen((open) => !open)}
+        onClick={handleToggle}
       >
         <FontAwesomeIcon icon={faBars} />
       </button>
-      {isOpen && isMobile && (
+      {showBackdrop && (
         <div
           className={styles['panel__backdrop']}
           role="presentation"
-          onClick={() => setIsOpen(false)}
+          onClick={() => setMobileMode('compact')}
         />
       )}
       <aside
         data-testid="panel"
-        className={isOpen ? `${styles.panel} ${styles['panel--open']}` : styles.panel}
+        className={panelClass}
       >
         <div className={styles['panel__content']}>
-          <div className={compact ? `${styles['panel__photo']} ${styles['panel__photo--compact']}` : styles['panel__photo']}>
+          <div
+            className={
+              compact
+                ? `${styles['panel__photo']} ${styles['panel__photo--compact']}`
+                : styles['panel__photo']
+            }
+          >
             <PhotoBox name={name} avatar={avatar} variant="sidebar" />
           </div>
           <Navigation compact={compact} />
         </div>
         <button
           type="button"
-          className={compact ? `${styles['panel__go-back']} ${styles['panel__go-back--compact']}` : styles['panel__go-back']}
+          className={
+            compact
+              ? `${styles['panel__go-back']} ${styles['panel__go-back--compact']}`
+              : styles['panel__go-back']
+          }
           onClick={() => navigate('/')}
           aria-label="Go back"
         >
