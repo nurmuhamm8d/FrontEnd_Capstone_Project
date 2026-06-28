@@ -26,6 +26,14 @@
   font-weight: 400;
   color: vars.$color-text-muted;
   margin-top: 2px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .expertise__item {
+    grid-template-columns: 80px 1fr;
+  }
 }
 
 .expertise__company {

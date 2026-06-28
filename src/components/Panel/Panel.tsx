@@ -18,7 +18,7 @@ const MOBILE_OPEN_WIDTH = 240;
 const MOBILE_RAIL_WIDTH = 60;
 
 const isDesktopViewport = () =>
-  typeof window !== 'undefined' && window.innerWidth > 599;
+  typeof window !== 'undefined' && window.innerWidth > 599 && window.innerHeight > 500;
 
 export const Panel = ({ name, avatar }: PanelProps) => {
   const [isOpen, setIsOpen] = useState(isDesktopViewport);
@@ -71,16 +71,16 @@ export const Panel = ({ name, avatar }: PanelProps) => {
             <PhotoBox name={name} avatar={avatar} variant="sidebar" />
           </div>
           <Navigation compact={compact} />
-          <button
-            type="button"
-            className={compact ? `${styles['panel__go-back']} ${styles['panel__go-back--compact']}` : styles['panel__go-back']}
-            onClick={() => navigate('/')}
-            aria-label="Go back"
-          >
-            <GoBackIcon className={styles['panel__go-back-icon']} aria-hidden="true" />
-            {!compact && <span>Go back</span>}
-          </button>
         </div>
+        <button
+          type="button"
+          className={compact ? `${styles['panel__go-back']} ${styles['panel__go-back--compact']}` : styles['panel__go-back']}
+          onClick={() => navigate('/')}
+          aria-label="Go back"
+        >
+          <GoBackIcon className={styles['panel__go-back-icon']} aria-hidden="true" />
+          {!compact && <span>Go back</span>}
+        </button>
       </aside>
     </>
   );

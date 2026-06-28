@@ -11,6 +11,8 @@
   top: 0;
   align-self: flex-start;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   transition: width 0.25s ease, padding 0.25s ease;
 
   @include mix.mobile {
@@ -59,10 +61,10 @@
 }
 
 .panel__content {
-  position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -87,10 +89,9 @@
 }
 
 .panel__go-back {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 31px;
+  flex-shrink: 0;
+  align-self: center;
+  margin: 0 0 31px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -114,8 +115,6 @@
 }
 
 .panel__go-back--compact {
-  left: 50%;
-  transform: translateX(-50%);
   justify-content: center;
   color: vars.$color-dark;
   background: vars.$color-primary;
