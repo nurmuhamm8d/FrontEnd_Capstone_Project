@@ -57,13 +57,23 @@
 }
 
 .skills__scale {
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(34, 41, 53, 0.15);
+  padding-top: 0;
   font-size: 13px;
   color: vars.$color-text-muted;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #667081;
+  }
 
   span {
     display: flex;
@@ -77,6 +87,14 @@
       width: 1px;
       height: 10px;
       background: #667081;
+    }
+
+    &:first-child {
+      align-items: flex-start;
+    }
+
+    &:last-child {
+      align-items: flex-end;
     }
   }
 }
