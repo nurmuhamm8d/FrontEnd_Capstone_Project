@@ -45,7 +45,7 @@ export function makeServer({ environment = 'development' } = {}) {
       this.post('/skills', (schema, request) => {
         const attrs = JSON.parse(request.requestBody) as Partial<SkillApiItem>;
         if (!attrs.name || typeof attrs.range !== 'number') {
-          return new Response(422, {}, { error: 'Имя и уровень навыка обязательны' });
+          return new Response(422, {}, { error: 'Skill name and range are required' });
         }
         return schema.db.skills.insert({ name: attrs.name, range: attrs.range });
       });
