@@ -59,7 +59,7 @@ export const Navigation = ({ compact = false }: NavigationProps) => {
   }, []);
 
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.nav} aria-label="Main navigation">
       <ul>
         {NAV_ITEMS.map(({ label, id, Icon }) => {
           const linkClass = [
@@ -71,7 +71,12 @@ export const Navigation = ({ compact = false }: NavigationProps) => {
             .join(' ');
           return (
             <li key={id}>
-              <a href={`#${id}`} className={linkClass} title={compact ? label : undefined}>
+              <a
+                href={`#${id}`}
+                className={linkClass}
+                title={compact ? label : undefined}
+                aria-current={id === activeId ? 'location' : undefined}
+              >
                 <Icon className={styles['nav__icon']} aria-hidden="true" />
                 {!compact && <span className={styles['nav__label']}>{label}</span>}
               </a>

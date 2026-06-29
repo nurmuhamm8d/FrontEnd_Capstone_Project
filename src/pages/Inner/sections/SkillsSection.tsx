@@ -31,7 +31,7 @@ export const SkillsSection = () => {
     <>
       <div className={styles['skills-section__header']}>
         <h2 className={styles['skills-section__title']}>Skills</h2>
-        <button type="button" className={styles['skills-section__open-edit']} onClick={() => setIsEditOpen((open) => !open)}>
+        <button type="button" className={styles['skills-section__open-edit']} aria-expanded={isEditOpen} onClick={() => setIsEditOpen((open) => !open)}>
           <EditIcon aria-hidden="true" />
           <span>Open edit</span>
         </button>

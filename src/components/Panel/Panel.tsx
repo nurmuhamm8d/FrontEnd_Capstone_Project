@@ -85,6 +85,7 @@ export const Panel = ({ name, avatar }: PanelProps) => {
       <button
         type="button"
         aria-label="Toggle navigation"
+        aria-expanded={isDesktop ? desktopOpen : mobileMode === 'expanded'}
         className={styles['panel__hamburger']}
         style={{ left: `${hamburgerLeft}px` }}
         onClick={handleToggle}
@@ -100,6 +101,7 @@ export const Panel = ({ name, avatar }: PanelProps) => {
       )}
       <aside
         data-testid="panel"
+        aria-label="Navigation panel"
         className={panelClass}
       >
         <div className={styles['panel__content']}>

@@ -7,7 +7,7 @@ export const Portfolio = () => {
 
   return (
     <div>
-      <div className={styles['portfolio__tabs']}>
+      <div className={styles['portfolio__tabs']} role="group" aria-label="Filter portfolio by category">
         {portfolioCategories.map((category, index) => (
           <span key={category} className={styles['portfolio__tab-wrap']}>
             <button
@@ -17,6 +17,7 @@ export const Portfolio = () => {
                   ? `${styles['portfolio__tab']} ${styles['portfolio__tab--active']}`
                   : styles['portfolio__tab']
               }
+              aria-pressed={category === activeCategory}
               onClick={() => setActiveCategory(category)}
             >
               {category}

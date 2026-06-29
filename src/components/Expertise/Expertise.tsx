@@ -11,7 +11,7 @@ export const Expertise = ({ data }: ExpertiseProps) => (
       <li key={`${date}-${info.company}`} className={styles['expertise__item']}>
         <div className={styles['expertise__meta']}>
           <h3 className={styles['expertise__company']}>{info.company}</h3>
-          <span className={styles['expertise__date']}>{date}</span>
+          <time className={styles['expertise__date']}>{date}</time>
         </div>
         <div className={styles['expertise__details']}>
           <h4 className={styles['expertise__job']}>{info.job}</h4>

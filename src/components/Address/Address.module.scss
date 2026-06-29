@@ -4,6 +4,12 @@
   font-style: normal;
 }
 
+.address__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .address__row {
   display: flex;
   align-items: center;

@@ -10,7 +10,7 @@ export const TimeLine = ({ data }: TimeLineProps) => (
   <ul className={styles.timeline}>
     {data.map(({ date, title, text }) => (
       <li key={`${date}-${title}`} className={styles['timeline__item']}>
-        <span className={styles['timeline__date']}>{date}</span>
+        <time className={styles['timeline__date']}>{date}</time>
         <div className={styles['timeline__card']}>
           <CardCornerIcon className={styles['timeline__corner']} aria-hidden="true" />
           <h3 className={styles['timeline__title']}>{title}</h3>

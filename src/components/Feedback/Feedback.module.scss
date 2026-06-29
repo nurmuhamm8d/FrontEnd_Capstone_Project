@@ -12,6 +12,13 @@
   gap: 15px;
 }
 
+.feedback__figure {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0;
+}
+
 .feedback__quote {
   font-family: vars.$font-main;
   font-size: 14px;
