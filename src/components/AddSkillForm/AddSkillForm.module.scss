@@ -58,6 +58,10 @@
       font-size: 12px;
     }
 
+    &:hover {
+      border-color: vars.$color-dark;
+    }
+
     &:focus {
       outline: none;
       border-color: vars.$color-primary;
@@ -90,8 +94,10 @@
   transition: background-color 0.2s ease;
   box-sizing: border-box;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: vars.$color-primary;
+    outline: none;
   }
 
   &:disabled {
