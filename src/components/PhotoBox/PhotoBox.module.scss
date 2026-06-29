@@ -28,7 +28,7 @@
 }
 
 .photo-box__name {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: vars.$font-main;
   font-size: 45px;
   font-weight: 700;
   line-height: 120%;
@@ -45,7 +45,7 @@
 }
 
 .photo-box__title {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: vars.$font-main;
   font-size: 25px;
   font-weight: 600;
   line-height: 120%;

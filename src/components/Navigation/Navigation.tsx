@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { AboutIcon } from '../../assets/icons/nav/about';
 import { EducationIcon } from '../../assets/icons/nav/education';
 import { ExperienceIcon } from '../../assets/icons/nav/experience';
@@ -22,60 +22,29 @@ export interface NavigationProps {
   compact?: boolean;
 }
 
-export const Navigation = ({ compact = false }: NavigationProps) => {
-  const [activeId, setActiveId] = useState<string>(NAV_ITEMS[0].id);
-
-  useEffect(() => {
-    const sections = NAV_ITEMS.map(({ id }) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => el !== null
-    );
-
-    const handleScroll = () => {
-      const triggerLine = 120;
-      const scrollBottom = window.scrollY + window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-      const isScrollable = docHeight > window.innerHeight + 100;
-
-      if (isScrollable && docHeight - scrollBottom < 8) {
-        setActiveId(NAV_ITEMS[NAV_ITEMS.length - 1].id);
-        return;
-      }
-
-      let current = NAV_ITEMS[0].id;
-      sections.forEach((section) => {
-        if (section.getBoundingClientRect().top - triggerLine <= 0) {
-          current = section.id;
-        }
-      });
-      setActiveId(current);
-    };
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <nav className={styles.nav}>
-      <ul>
-        {NAV_ITEMS.map(({ label, id, Icon }) => {
-          const linkClass = [
-            styles['nav__link'],
-            id === activeId && styles['nav__link--active'],
-            compact && styles['nav__link--compact'],
-          ]
-            .filter(Boolean)
-            .join(' ');
-          return (
-            <li key={id}>
-              <a href={`#${id}`} className={linkClass} title={compact ? label : undefined}>
-                <Icon className={styles['nav__icon']} aria-hidden="true" />
-                {!compact && <span className={styles['nav__label']}>{label}</span>}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  );
-};
+export const Navigation = ({ compact = false }: NavigationProps) => (
+  <nav className={styles.nav}>
+    <ul>
+      {NAV_ITEMS.map(({ label, id, Icon }) => (
+        <li key={id}>
+          <NavLink
+            to={`/inner/${id}`}
+            className={({ isActive }) =>
+              [
+                styles['nav__link'],
+                isActive && styles['nav__link--active'],
+                compact && styles['nav__link--compact'],
+              ]
+                .filter(Boolean)
+                .join(' ')
+            }
+            title={compact ? label : undefined}
+          >
+            <Icon className={styles['nav__icon']} aria-hidden="true" />
+            {!compact && <span className={styles['nav__label']}>{label}</span>}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  </nav>
+);

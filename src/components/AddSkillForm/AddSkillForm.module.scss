@@ -31,7 +31,7 @@
 
   label {
     width: 71px;
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: vars.$font-main;
     font-size: 14px;
     font-weight: 400;
     line-height: 120%;
@@ -45,7 +45,7 @@
     padding: 0 12px;
     border: 1px solid #667081;
     border-radius: 5px;
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: vars.$font-main;
     font-size: 12px;
     font-weight: 400;
     line-height: 120%;
@@ -81,7 +81,7 @@
   border-radius: 5px;
   background: vars.$color-dark;
   color: #fff;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: vars.$font-main;
   font-size: 16px;
   font-weight: 400;
   line-height: 120%;

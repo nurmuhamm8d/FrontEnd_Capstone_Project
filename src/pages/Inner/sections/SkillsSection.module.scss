@@ -9,7 +9,7 @@
 
 .skills-section__title {
   color: vars.$color-primary;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: vars.$font-main;
   font-size: 25px;
   font-weight: 700;
   line-height: 120%;
@@ -27,7 +27,7 @@
   border-radius: 4px;
   background: vars.$color-dark;
   color: #fff;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: vars.$font-main;
   font-size: 16px;
   font-weight: 400;
   line-height: 120%;

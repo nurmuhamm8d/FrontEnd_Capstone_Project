@@ -18,9 +18,13 @@ type MobileMode = 'compact' | 'expanded' | 'hidden';
 const DESKTOP_WIDTH = 250;
 const MOBILE_OPEN_WIDTH = 240;
 const MOBILE_RAIL_WIDTH = 60;
+const MOBILE_BREAKPOINT_WIDTH = 599;
+const MOBILE_BREAKPOINT_HEIGHT = 500;
 
 const isDesktopViewport = () =>
-  typeof window !== 'undefined' && window.innerWidth > 599 && window.innerHeight > 500;
+  typeof window !== 'undefined' &&
+  window.innerWidth > MOBILE_BREAKPOINT_WIDTH &&
+  window.innerHeight > MOBILE_BREAKPOINT_HEIGHT;
 
 export const Panel = ({ name, avatar }: PanelProps) => {
   const [isDesktop, setIsDesktop] = useState(isDesktopViewport);
