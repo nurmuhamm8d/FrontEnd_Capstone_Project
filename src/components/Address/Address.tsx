@@ -1,8 +1,7 @@
-import { PhoneIcon } from '../../assets/icons/contacts/phone';
-import { EmailIcon } from '../../assets/icons/contacts/email';
-import { TwitterIcon } from '../../assets/icons/contacts/twitter';
-import { FacebookIcon } from '../../assets/icons/contacts/facebook';
-import { VkIcon } from '../../assets/icons/contacts/vk';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faSkype, faXTwitter, faFacebook, faVk } from '@fortawesome/free-brands-svg-icons';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import styles from './Address.module.scss';
 
 export interface SocialLink {
@@ -18,32 +17,33 @@ export interface AddressProps {
   socials?: SocialLink[];
 }
 
-const SOCIAL_ICONS: Record<string, typeof TwitterIcon> = {
-  Twitter: TwitterIcon,
-  Facebook: FacebookIcon,
-  VK: VkIcon,
+const SOCIAL_ICONS: Record<string, IconDefinition> = {
+  Twitter: faXTwitter,
+  Facebook: faFacebook,
+  VK: faVk,
+  Skype: faSkype,
 };
 
 export const Address = ({ email, phone, location, socials = [] }: AddressProps) => (
   <address className={styles.address}>
     <ul className={styles['address__list']}>
       <li className={styles['address__row']}>
-        <PhoneIcon className={styles['address__icon']} aria-hidden="true" />
+        <FontAwesomeIcon icon={faPhone} className={styles['address__icon']} aria-hidden="true" />
         <a href={`tel:${phone}`} className={styles['address__primary']}>
           {phone}
         </a>
       </li>
       <li className={styles['address__row']}>
-        <EmailIcon className={styles['address__icon']} aria-hidden="true" />
+        <FontAwesomeIcon icon={faEnvelope} className={styles['address__icon']} aria-hidden="true" />
         <a href={`mailto:${email}`} className={styles['address__primary']}>
           {email}
         </a>
       </li>
       {socials.map(({ label, value, url }) => {
-        const Icon = SOCIAL_ICONS[label];
+        const icon = SOCIAL_ICONS[label];
         return (
           <li className={styles['address__row']} key={label}>
-            {Icon && <Icon className={styles['address__icon']} aria-hidden="true" />}
+            {icon && <FontAwesomeIcon icon={icon} className={styles['address__icon']} aria-hidden="true" />}
             <span className={styles['address__social-text']}>
               <span className={styles['address__primary']}>{label}</span>
               <a href={url} target="_blank" rel="noreferrer" className={styles['address__secondary']}>

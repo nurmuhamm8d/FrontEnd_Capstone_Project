@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { EditIcon } from '../../../assets/icons/nav/edit';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Skills } from '../../../components/Skills/Skills';
 import { AddSkillForm } from '../../../components/AddSkillForm/AddSkillForm';
 import { Spinner } from '../../../components/Spinner/Spinner';
@@ -32,7 +33,7 @@ export const SkillsSection = () => {
       <div className={styles['skills-section__header']}>
         <h2 className={styles['skills-section__title']}>Skills</h2>
         <button type="button" className={styles['skills-section__open-edit']} aria-expanded={isEditOpen} onClick={() => setIsEditOpen((open) => !open)}>
-          <EditIcon aria-hidden="true" />
+          <FontAwesomeIcon icon={faPen} aria-hidden="true" />
           <span>Open edit</span>
         </button>
       </div>

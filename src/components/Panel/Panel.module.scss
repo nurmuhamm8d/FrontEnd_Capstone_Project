@@ -83,14 +83,7 @@
 }
 
 .panel__photo--compact {
-  h1 {
-    display: none;
-  }
-
-  img {
-    width: 40px !important;
-    height: 40px !important;
-  }
+  padding-top: 12px;
 }
 
 .panel__go-back {

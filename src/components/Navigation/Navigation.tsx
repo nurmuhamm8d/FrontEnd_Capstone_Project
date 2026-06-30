@@ -1,21 +1,25 @@
 import { useEffect, useState } from 'react';
-import { AboutIcon } from '../../assets/icons/nav/about';
-import { EducationIcon } from '../../assets/icons/nav/education';
-import { ExperienceIcon } from '../../assets/icons/nav/experience';
-import { SkillsIcon } from '../../assets/icons/nav/skills';
-import { PortfolioIcon } from '../../assets/icons/nav/portfolio';
-import { ContactsNavIcon } from '../../assets/icons/nav/contacts';
-import { FeedbacksIcon } from '../../assets/icons/nav/feedbacks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUser,
+  faGraduationCap,
+  faBriefcase,
+  faGem,
+  faSuitcase,
+  faPhone,
+  faComment,
+} from '@fortawesome/free-solid-svg-icons';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import styles from './Navigation.module.scss';
 
-const NAV_ITEMS = [
-  { label: 'About me', id: 'about', Icon: AboutIcon },
-  { label: 'Education', id: 'education', Icon: EducationIcon },
-  { label: 'Experience', id: 'experience', Icon: ExperienceIcon },
-  { label: 'Skills', id: 'skills', Icon: SkillsIcon },
-  { label: 'Portfolio', id: 'portfolio', Icon: PortfolioIcon },
-  { label: 'Contacts', id: 'contacts', Icon: ContactsNavIcon },
-  { label: 'Feedback', id: 'feedback', Icon: FeedbacksIcon },
+const NAV_ITEMS: { label: string; id: string; icon: IconDefinition }[] = [
+  { label: 'About me', id: 'about', icon: faUser },
+  { label: 'Education', id: 'education', icon: faGraduationCap },
+  { label: 'Experience', id: 'experience', icon: faBriefcase },
+  { label: 'Skills', id: 'skills', icon: faGem },
+  { label: 'Portfolio', id: 'portfolio', icon: faSuitcase },
+  { label: 'Contacts', id: 'contacts', icon: faPhone },
+  { label: 'Feedback', id: 'feedback', icon: faComment },
 ];
 
 const TRIGGER_LINE = 120;
@@ -61,7 +65,7 @@ export const Navigation = ({ compact = false }: NavigationProps) => {
   return (
     <nav className={styles.nav} aria-label="Main navigation">
       <ul>
-        {NAV_ITEMS.map(({ label, id, Icon }) => {
+        {NAV_ITEMS.map(({ label, id, icon }) => {
           const linkClass = [
             styles['nav__link'],
             id === activeId && styles['nav__link--active'],
@@ -77,7 +81,7 @@ export const Navigation = ({ compact = false }: NavigationProps) => {
                 title={compact ? label : undefined}
                 aria-current={id === activeId ? 'location' : undefined}
               >
-                <Icon className={styles['nav__icon']} aria-hidden="true" />
+                <FontAwesomeIcon icon={icon} className={styles['nav__icon']} aria-hidden="true" fixedWidth />
                 {!compact && <span className={styles['nav__label']}>{label}</span>}
               </a>
             </li>

@@ -27,6 +27,12 @@
   margin-bottom: 10px;
 }
 
+.photo-box__avatar--compact {
+  width: 40px !important;
+  height: 40px !important;
+  margin-bottom: 0;
+}
+
 .photo-box__name {
   font-family: vars.$font-main;
   font-size: 45px;

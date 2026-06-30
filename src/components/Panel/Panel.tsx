@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Navigation } from '../Navigation/Navigation';
 import { PhotoBox } from '../PhotoBox/PhotoBox';
-import { GoBackIcon } from '../../assets/icons/nav/go-back';
 import styles from './Panel.module.scss';
 
 export interface PanelProps {
@@ -112,7 +111,7 @@ export const Panel = ({ name, avatar }: PanelProps) => {
                 : styles['panel__photo']
             }
           >
-            <PhotoBox name={name} avatar={avatar} variant="sidebar" />
+            <PhotoBox name={name} avatar={avatar} variant="sidebar" compact={compact} />
           </div>
           <Navigation compact={compact} />
         </div>
@@ -126,7 +125,7 @@ export const Panel = ({ name, avatar }: PanelProps) => {
           onClick={() => navigate('/')}
           aria-label="Go back"
         >
-          <GoBackIcon className={styles['panel__go-back-icon']} aria-hidden="true" />
+          <FontAwesomeIcon icon={faChevronLeft} className={styles['panel__go-back-icon']} aria-hidden="true" />
           {!compact && <span>Go back</span>}
         </button>
       </aside>
