@@ -7,19 +7,22 @@ export interface PhotoBoxProps {
   description?: string;
   avatar: string;
   variant?: 'hero' | 'sidebar';
+  compact?: boolean;
 }
 
-export const PhotoBox = ({ name, title, description, avatar, variant = 'hero' }: PhotoBoxProps) => (
+export const PhotoBox = ({ name, title, description, avatar, variant = 'hero', compact = false }: PhotoBoxProps) => (
   <div className={variant === 'sidebar' ? `${styles['photo-box']} ${styles['photo-box--sidebar']}` : styles['photo-box']}>
     <img
-      className={variant === 'sidebar' ? `${styles['photo-box__avatar']} ${styles['photo-box__avatar--sidebar']}` : styles['photo-box__avatar']}
+      className={variant === 'sidebar' ? `${styles['photo-box__avatar']} ${styles['photo-box__avatar--sidebar']} ${compact ? styles['photo-box__avatar--compact'] : ''}` : styles['photo-box__avatar']}
       src={avatar}
       alt={name}
     />
-    {variant === 'sidebar' ? (
-      <p className={`${styles['photo-box__name']} ${styles['photo-box__name--sidebar']}`}>{name}</p>
-    ) : (
-      <h1 className={styles['photo-box__name']}>{name}</h1>
+    {!compact && (
+      variant === 'sidebar' ? (
+        <p className={`${styles['photo-box__name']} ${styles['photo-box__name--sidebar']}`}>{name}</p>
+      ) : (
+        <h1 className={styles['photo-box__name']}>{name}</h1>
+      )
     )}
     {title && <h2 className={styles['photo-box__title']}>{title}</h2>}
     {description && (
